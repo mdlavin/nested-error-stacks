@@ -1,0 +1,16 @@
+{
+  "name": "nested-error-stacks",
+  "version": "0.0.1",
+  "description": "An Error subclass that will chain nested Errors and dump nested stacktraces",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "author": "Matt Lavin <matt.lavin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "uuid": "^1.4.1",
+    "chai": "^1.9.1"
+  }
+}
