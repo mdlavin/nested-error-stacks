@@ -1,7 +1,9 @@
 Nested stacktraces for Node.js!
 ===============================
 
-[![Build Status](https://travis-ci.org/mdlavin/nested-error-stacks.png)](https://travis-ci.org/mdlavin/nested-error-stacks)
+[![Build Status](https://travis-ci.org/mdlavin/nested-error-stacks.svg)](https://travis-ci.org/mdlavin/nested-error-stacks)
+[![NPM version](https://badge.fury.io/js/nested-error-stacks.svg)](http://badge.fury.io/js/nested-error-stacks)
+[![Dependency Status](https://david-dm.org/mdlavin/nested-error-stacks.svg)](https://david-dm.org/mdlavin/nested-error-stacks)
 
 With this module, you can wrap a caught exception with extra context
 for better debugging.  For example, a network error's stack would normally look
