@@ -2,12 +2,20 @@ var util = require('util');
 
 var NestedError = function (message, nested) {
     Error.call(this);
-    this.message = message;
     this.nested = nested;
 
     Error.captureStackTrace(this, this.constructor);
 
     var oldStackDescriptor = Object.getOwnPropertyDescriptor(this, 'stack');
+
+    if (typeof message !== 'undefined') {
+        Object.defineProperty(this, 'message', {
+            value: message,
+            writable: true,
+            enumerable: false,
+            configurable: true
+        });
+    }
 
     Object.defineProperties(this, {
         stack: {
