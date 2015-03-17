@@ -30,6 +30,7 @@ How to wrap errors
 
 Here is an example program that uses this module to add more context to errors:
 
+```javascript
     var NestedError = require('nested-error-stacks');
     var net = require('net');
     
@@ -38,3 +39,4 @@ Here is an example program that uses this module to add more context to errors:
     var newErr = new NestedError("Failed to communicate with localhost:8080", err);
         console.log(newErr.stack);
     });
+```
