@@ -6,20 +6,20 @@ var NestedError = function (message, nested) {
     this.nested = nested;
 
     Error.captureStackTrace(this, this.constructor);
-    
+
     var oldStackDescriptor = Object.getOwnPropertyDescriptor(this, 'stack');
 
     Object.defineProperties(this, {
         stack: {
             get: function () {
-                var stack = oldStackDescriptor.get();
+                var stack = oldStackDescriptor.get.call(this);
                 if (this.nested) {
                     stack += '\nCaused By: ' + this.nested.stack;
                 }
                 return stack;
             }
         }
-        
+
     });
 };
 
