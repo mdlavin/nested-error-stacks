@@ -11,6 +11,9 @@
       "url": "https://github.com/mdlavin/nested-error-stacks.git"
   },
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "node_modules/.bin/mocha"
   },
