@@ -12,7 +12,8 @@
   },
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "LICENSE"
   ],
   "scripts": {
     "test": "node_modules/.bin/mocha"
