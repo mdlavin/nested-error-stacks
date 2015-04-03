@@ -26,7 +26,7 @@ that looks like this:
         at Object.afterConnect [as oncomplete] (net.js:895:19)
 
 How to wrap errors
-==================
+------------------
 
 Here is an example program that uses this module to add more context to errors:
 
@@ -39,4 +39,23 @@ Here is an example program that uses this module to add more context to errors:
     var newErr = new NestedError("Failed to communicate with localhost:8080", err);
         console.log(newErr.stack);
     });
+```
+
+How to inherit
+--------------
+
+It is recomennded to use explicit names for Error classes. You can do it like this:
+
+```js
+var util = require('util');
+var objectAssign = require('object-assign');
+var NestedError = require('nested-error-stacks');
+
+function MyError(message, nested) {
+    NestedError.call(this, message, nested);
+    objectAssign(this, nested); // copy error.code and other fields
+}
+
+util.inherits(MyError, NestedError);
+MyError.prototype.name = 'MyError';
 ```
