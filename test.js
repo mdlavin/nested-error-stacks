@@ -1,7 +1,7 @@
 var NestedError = require('./index.js');
 var expect = require('chai').expect;
 var uuid = require('uuid');
-var util = require('util');
+var inherits = require('inherits');
 
 describe('NestedErrors', function ()  {
 
@@ -45,7 +45,7 @@ describe('NestedErrors', function ()  {
         var SubclassError = function (message) {
             NestedError.call(this, message);
         };
-        util.inherits(SubclassError, NestedError);
+        inherits(SubclassError, NestedError);
         SubclassError.prototype.name = 'SubclassError';
 
         var message = uuid.v1();
@@ -58,7 +58,7 @@ describe('NestedErrors', function ()  {
         var SubclassError = function (message, nested) {
             NestedError.call(this, message, nested);
         };
-        util.inherits(SubclassError, NestedError);
+        inherits(SubclassError, NestedError);
         SubclassError.prototype.name = 'SubclassError';
 
         var childMessage = uuid.v1();
