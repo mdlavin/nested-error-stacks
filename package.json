@@ -20,6 +20,9 @@
   },
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "inherits": "~2.0.1"
+  },
   "devDependencies": {
     "mocha": "~1.18.2",
     "uuid": "~1.4.1",
