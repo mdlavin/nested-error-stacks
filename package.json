@@ -20,7 +20,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "( [ \"$RUN_ZUUL\" != \"true\" ] && node_modules/.bin/mocha ) || ([ \"$RUN_ZUUL\" == \"true\" ] && npm install zuul && node_modules/.bin/zuul -- test.js )"
+    "test": "if [ \"$RUN_ZUUL\" != \"true\" ]; then node_modules/.bin/mocha; else npm install zuul && node_modules/.bin/zuul -- test.js; fi"
   },
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
