@@ -20,7 +20,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "( [ \"$RUN_ZUUL\" != \"true\" ] && node_modules/.bin/mocha ) || ([ \"$RUN_ZUUL\" == \"true\" ] && node_modules/.bin/zuul -- test.js )"
+    "test": "( [ \"$RUN_ZUUL\" != \"true\" ] && node_modules/.bin/mocha ) || ([ \"$RUN_ZUUL\" == \"true\" ] && npm install zuul && node_modules/.bin/zuul -- test.js )"
   },
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
@@ -30,7 +30,6 @@
   "devDependencies": {
     "chai": "~1.9.1",
     "mocha": "~1.18.2",
-    "uuid": "~1.4.1",
-    "zuul": "^3.2.0"
+    "uuid": "~1.4.1"
   }
 }
