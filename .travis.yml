@@ -1,9 +1,17 @@
 sudo: false
 language: node_js
 node_js:
-  - "iojs"
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "0.8"
-  - "0.6"
+- iojs
+- '0.12'
+- '0.11'
+- '0.10'
+- '0.8'
+- '0.6'
+matrix:
+  include:
+  - node_js: '0.10'
+    env: RUN_ZUUL=true
+env:
+  global:
+  - secure: MyFpgZfZRqz8WoASol6z2oz03JUjFcx3xuDV5iS9WRhyPqKHtWzQuQVjtL4rW15auxT3LaLY+5ygtSnhgpczpG5WUGzwQJCdDZs+a4GvCRqS59D45QuM0WB/gHjRKmBrQLm1AfYU6wWx5dC7wS/UKByTiASqEvUQJibsEIg25WY=
+  - secure: hYFSQNqf/y1IV1eGXth4w+uju+ZXDHqLv9Q7+tTd+uwSleqmwvNaGDFgDInJieKKYo4Fxn8s2ls6EToavHaDy0LS8nDruArudhwTsXL7abdx++laz/+81363lwWsc9tR0qCgjG38XLCyk5+JEyZiBU82OYEi2cY/bItdY7oHgCU=
