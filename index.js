@@ -1,7 +1,6 @@
 var inherits = require('inherits');
 
 var NestedError = function (message, nested) {
-    Error.call(this);
     this.nested = nested;
 
     Error.captureStackTrace(this, this.constructor);
