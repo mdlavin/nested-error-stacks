@@ -25,6 +25,7 @@
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "capture-stack-trace": "~1.0.0",
     "inherits": "~2.0.1"
   },
   "devDependencies": {

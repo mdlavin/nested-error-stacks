@@ -1,9 +1,10 @@
+var captureStackTrace = require('capture-stack-trace');
 var inherits = require('inherits');
 
 var NestedError = function (message, nested) {
     this.nested = nested;
 
-    Error.captureStackTrace(this, this.constructor);
+    captureStackTrace(this, this.constructor);
 
     var oldStackDescriptor = Object.getOwnPropertyDescriptor(this, 'stack');
 
