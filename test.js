@@ -86,4 +86,16 @@ describe('NestedErrors', function ()  {
         expect(messageDescriptor).to.be.undefined;
     });
 
+
+    it('has stack property attributes that match other errors', function () {
+        var normal = new Error();
+        var nested = new Error('test', normal);
+
+        var normalStackDescriptor = Object.getOwnPropertyDescriptor(normal, 'stack');
+        var nestedStackDescriptor = Object.getOwnPropertyDescriptor(nested, 'stack');
+
+        expect(nestedStackDescriptor.enumerable, 'enumerable').to.equal(normalStackDescriptor.enumerable);
+        expect(nestedStackDescriptor.configurable, 'configurable').to.equal(normalStackDescriptor.configurable);
+        expect(nestedStackDescriptor.writable, 'writable').to.equal(normalStackDescriptor.writable);
+    });
 });
