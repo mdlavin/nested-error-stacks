@@ -1,0 +1,3 @@
+rules:
+  indent: ['error']
+  no-trailing-spaces: ['error']
