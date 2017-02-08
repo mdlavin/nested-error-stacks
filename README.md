@@ -44,7 +44,7 @@ client.on('error', function (err) {
 How to inherit
 --------------
 
-It is recomennded to use explicit names for Error classes. You can do it
+It is recommended to use explicit names for Error classes. You can do it
 like this:
 
 ```js
