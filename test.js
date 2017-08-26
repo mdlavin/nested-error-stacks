@@ -86,7 +86,6 @@ describe('NestedErrors', function ()  {
         expect(messageDescriptor).to.be.undefined;
     });
 
-
     it('has stack property attributes that match other errors', function () {
         var normal = new Error();
         var nested = new Error('test', normal);
@@ -98,4 +97,78 @@ describe('NestedErrors', function ()  {
         expect(nestedStackDescriptor.configurable, 'configurable').to.equal(normalStackDescriptor.configurable);
         expect(nestedStackDescriptor.writable, 'writable').to.equal(normalStackDescriptor.writable);
     });
+
+    context('Bluebird long stack trace support', function () {
+        beforeEach(function () {
+            delete require.cache[require.resolve('bluebird')]
+        });
+
+        it('without Bluebird long stack traces, includes child stack in \
+stacktrace without \'at\' prepended', function () {
+            var Promise = require('bluebird');
+
+            var childMessage = uuid.v1();
+            var child = new Error(childMessage);
+            var message = uuid.v1();
+            var nested = new NestedError(message, child);
+
+            return Promise.reject(nested)
+                .catch(function (err) {
+                    expect(err.stack).to.contain('Caused By: ' + child.stack);
+                    expect(err.stack).to.not.contain('at Caused By: ' + child.stack);
+                });
+        });
+
+        it('with BLUEBIRD_DEBUG=1, includes child stack in stacktrace \
+with \'at\' prepended', function () {
+            process.env.BLUEBIRD_DEBUG = 1;
+            var Promise = require('bluebird');
+
+            var childMessage = uuid.v1();
+            var child = new Error(childMessage);
+            var message = uuid.v1();
+            var nested = new NestedError(message, child);
+
+            return Promise.reject(nested)
+                .catch(function (err) {
+                    expect(err.stack).to.contain('at Caused By: ' + child.stack);
+                    delete process.env.BLUEBIRD_DEBUG;
+                });
+        });
+
+        it('with BLUEBIRD_LONG_STACK_TRACES=1, includes child stack in \
+stacktrace with \'at\' prepended', function () {
+            process.env.BLUEBIRD_LONG_STACK_TRACES = 1;
+            var Promise = require('bluebird');
+
+            var childMessage = uuid.v1();
+            var child = new Error(childMessage);
+            var message = uuid.v1();
+            var nested = new NestedError(message, child);
+
+            return Promise.reject(nested)
+                .catch(function (err) {
+                    expect(err.stack).to.contain('at Caused By: ' + child.stack);
+                    delete process.env.BLUEBIRD_LONG_STACK_TRACES;
+                });
+        });
+
+        it('with NODE_ENV=development, includes child stack in \
+stacktrace with \'at\' prepended', function () {
+            process.env.NODE_ENV = 'development';
+            var Promise = require('bluebird');
+
+            var childMessage = uuid.v1();
+            var child = new Error(childMessage);
+            var message = uuid.v1();
+            var nested = new NestedError(message, child);
+
+            return Promise.reject(nested)
+                .catch(function (err) {
+                    expect(err.stack).to.contain('at Caused By: ' + child.stack);
+                    delete process.env.NODE_ENV;
+                });
+        });
+    });
+
 });

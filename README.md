@@ -58,3 +58,12 @@ function MyError(message, nested) {
 util.inherits(MyError, NestedError);
 MyError.prototype.name = 'MyError';
 ```
+
+Bluebird long stack trace support
+---------------------------------
+
+By default, when bluebird long stack traces are enabled, any stack trace lines
+that don't begin with 'at' will get removed. To work around this, 'at ' is
+prepended to 'Caused By:...' if any of the environment variables
+BLUEBIRD_LONG_STACK_TRACES=\<truthy\>, BLUEBIRD_DEBUG=\<truthy\>, or
+NODE_ENV=development are set.

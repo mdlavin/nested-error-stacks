@@ -35,9 +35,22 @@ function buildStackDescriptor(oldStackDescriptor, nested) {
 }
 
 function buildCombinedStacks(stack, nested) {
-    if (nested) {
-        stack += '\nCaused By: ' + nested.stack;
+    if (!nested) {
+        return stack;
     }
+
+    stack += '\n';
+
+    // Bluebird long stack traces will drop any
+    // trace lines that don't match /^\s*at\s*/
+    // see https://github.com/mdlavin/nested-error-stacks/issues/12
+    if (process.env.BLUEBIRD_DEBUG ||
+        process.env.BLUEBIRD_LONG_STACK_TRACES ||
+        process.env.NODE_ENV === 'development') {
+        stack += 'at ';
+    }
+
+    stack += 'Caused By: ' + nested.stack;
     return stack;
 }
 
