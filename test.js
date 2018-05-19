@@ -1,7 +1,7 @@
 var NestedError = require('./index.js');
 var expect = require('chai').expect;
 var uuid = require('uuid');
-var inherits = require('inherits');
+var inherits = require('util').inherits;
 
 describe('NestedErrors', function ()  {
 

@@ -1,4 +1,4 @@
-var inherits = require('inherits');
+var inherits = require('util').inherits;
 
 var NestedError = function (message, nested) {
     this.nested = nested;
