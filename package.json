@@ -24,9 +24,6 @@
   },
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "inherits": "~2.0.1"
-  },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.9.1",
