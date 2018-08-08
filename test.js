@@ -86,7 +86,6 @@ describe('NestedErrors', function ()  {
         expect(messageDescriptor).to.be.undefined;
     });
 
-
     it('has stack property attributes that match other errors', function () {
         var normal = new Error();
         var nested = new Error('test', normal);
@@ -97,5 +96,11 @@ describe('NestedErrors', function ()  {
         expect(nestedStackDescriptor.enumerable, 'enumerable').to.equal(normalStackDescriptor.enumerable);
         expect(nestedStackDescriptor.configurable, 'configurable').to.equal(normalStackDescriptor.configurable);
         expect(nestedStackDescriptor.writable, 'writable').to.equal(normalStackDescriptor.writable);
+    });
+
+    it('can accept only error parameter', function () {
+        var error = new Error();
+        var nestedError = new NestedError(error);
+        expect(nestedError).to.be.an.instanceOf(NestedError);
     });
 });
