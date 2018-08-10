@@ -3,7 +3,9 @@ var inherits = require('util').inherits;
 var NestedError = function (message, nested) {
     this.nested = nested;
 
-    if (typeof message !== 'undefined') {
+    if (message instanceof Error) {
+        nested = message;
+    } else if (typeof message !== 'undefined') {
         Object.defineProperty(this, 'message', {
             value: message,
             writable: true,
