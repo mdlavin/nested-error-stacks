@@ -1,6 +1,6 @@
 {
   "name": "nested-error-stacks",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "An Error subclass that will chain nested Errors and dump nested stacktraces",
   "bugs": {
     "url": "https://github.com/mdlavin/nested-error-stacks/issues"
