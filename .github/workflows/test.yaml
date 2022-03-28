@@ -1,4 +1,4 @@
-name: PR Build and Test
+name: Tests
 
 on:
   push:
