@@ -20,7 +20,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "if node --version | grep -vE 'v(0|3)' > /dev/null 2>&1; then eslint . || exit -1; fi; if [ \"$RUN_ZUUL\" != \"true\" ]; then node_modules/.bin/mocha; else npm install zuul && node_modules/.bin/zuul -- test.js; fi"
+    "test": "if node --version | grep -vE '^v(0|3|4|5|6|7)\\.' > /dev/null 2>&1; then eslint . || exit -1; fi; if [ \"$RUN_ZUUL\" != \"true\" ]; then node_modules/.bin/mocha; else npm install zuul && node_modules/.bin/zuul -- test.js; fi"
   },
   "author": "Matt Lavin <matt.lavin@gmail.com>",
   "license": "MIT",
