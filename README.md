@@ -1,7 +1,7 @@
 Nested stacktraces for Node.js!
 ===============================
 
-[![Build Status](https://github.com/mdlavin/nested-error-stacks/actions/workflows/test.yml/badge.svg)](https://github.com/mdlavin/nested-error-stacks/actions?query=branch%3Amaster)
+[![Build Status](https://github.com/mdlavin/nested-error-stacks/actions/workflows/test.yaml/badge.svg)](https://github.com/mdlavin/nested-error-stacks/actions?query=branch%3Amaster)
 [![NPM version](https://badge.fury.io/js/nested-error-stacks.svg)](http://badge.fury.io/js/nested-error-stacks)
 
 With this module, you can wrap a caught exception with extra context
